@@ -933,7 +933,7 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
           }
         }
         if (!fromAirport.isGateway() && fromAirport.size <= 2 && flightCategory == FlightCategory.INTERNATIONAL) {
-          val currentTitle = CountryAirlineTitle.getTitle(toAirport.countryCode, airline)
+          val currentTitle = CountryAirlineTitle.getTitle(fromAirport.countryCode, airline)
           val requiredTitle = Title.ESTABLISHED_AIRLINE
           val ok = currentTitle.title.id <= requiredTitle.id //smaller value means higher title
           if (!ok) {
@@ -1719,3 +1719,4 @@ object LinkApplication {
   }
 
 }
+
