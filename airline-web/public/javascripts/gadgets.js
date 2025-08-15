@@ -824,7 +824,7 @@ function bindEnter(bindToElement, actionFunction) {
 }
 
 function isPremium() {
-    return activeUser && activeUser.level > 0
+    return activeUser && activeUser.level >= 0
 }
 
 function capitalizeFirstLetter(string) {
