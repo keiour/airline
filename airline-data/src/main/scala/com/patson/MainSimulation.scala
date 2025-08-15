@@ -14,7 +14,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.Duration
 
 object MainSimulation extends App {
-  val CYCLE_DURATION : Int = 60 * 29
+  val CYCLE_DURATION : Int = 60 * 20
   var currentWeek: Int = 0
 
 //  implicit val actorSystem = ActorSystem("rabbit-akka-stream")
@@ -86,6 +86,9 @@ object MainSimulation extends App {
       //purge airline modifier
       println("Purging airline modifier")
       AirlineSource.deleteAirlineModifierByExpiry(cycle)
+
+      // Invalidate caches once more to ensure the data is up-to-date 
+      invalidateCaches()
 
       val cycleEnd = System.currentTimeMillis()
       
