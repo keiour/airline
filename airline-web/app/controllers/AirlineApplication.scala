@@ -1181,7 +1181,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
     Ok(Json.toJson(AirlineCache.getAirline(airlineId).get.previousNames))
   }
 
-  val RENAME_COOLDOWN = Duration(7, DAYS)
+  val RENAME_COOLDOWN = Duration(3000, MILLISECONDS)
   def getRenameRejection(airline : Airline, newName : String) : Option[String] = {
     UserSource.loadUserByAirlineId(airline.id) match {
       case Some(user) =>
