@@ -1181,12 +1181,12 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
     Ok(Json.toJson(AirlineCache.getAirline(airlineId).get.previousNames))
   }
 
-  val RENAME_COOLDOWN = Duration(20, DAYS)
+  val RENAME_COOLDOWN = Duration(3000, MILLISECONDS)
   def getRenameRejection(airline : Airline, newName : String) : Option[String] = {
     UserSource.loadUserByAirlineId(airline.id) match {
       case Some(user) =>
-        if (user.level <= 0) {
-          return Some(s"User is not a patreon and cannot rename airline.")
+        if (user.level <= -1) {
+          return Some(s"User is not valid and cannot rename airline.")
         }
         val cooldown = getRenameCooldown(airline)
         if (cooldown > 0) {

@@ -10,8 +10,8 @@ object AllianceCache {
 
   import com.google.common.cache.{CacheBuilder, CacheLoader, LoadingCache}
 
-  val detailedCache: LoadingCache[Int, Option[Alliance]] = CacheBuilder.newBuilder.maximumSize(1000).expireAfterAccess(10, TimeUnit.MINUTES).build(new DetailedLoader())
-  val simpleCache: LoadingCache[Int, Option[Alliance]] = CacheBuilder.newBuilder.maximumSize(1000).expireAfterAccess(10, TimeUnit.MINUTES).build(new SimpleLoader())
+  val detailedCache: LoadingCache[Int, Option[Alliance]] = CacheBuilder.newBuilder.maximumSize(1000).expireAfterAccess(2, TimeUnit.MINUTES).build(new DetailedLoader())
+  val simpleCache: LoadingCache[Int, Option[Alliance]] = CacheBuilder.newBuilder.maximumSize(1000).expireAfterAccess(2, TimeUnit.MINUTES).build(new SimpleLoader())
 
   def getAlliance(allianceId : Int, fullLoad : Boolean = false) : Option[Alliance] = {
     if (fullLoad) {

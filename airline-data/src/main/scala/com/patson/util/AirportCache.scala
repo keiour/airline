@@ -10,8 +10,8 @@ object AirportCache {
   import scala.jdk.CollectionConverters._
   import com.google.common.cache.{CacheBuilder, CacheLoader, LoadingCache}
 
-  val detailedCache: LoadingCache[Int, Option[Airport]] = CacheBuilder.newBuilder.maximumSize(2000).expireAfterAccess(10, TimeUnit.MINUTES).build(new DetailedLoader())
-  val simpleCache: LoadingCache[Int, Option[Airport]] = CacheBuilder.newBuilder.maximumSize(10000).expireAfterAccess(10, TimeUnit.MINUTES).build(new SimpleLoader())
+  val detailedCache: LoadingCache[Int, Option[Airport]] = CacheBuilder.newBuilder.maximumSize(2000).expireAfterAccess(2, TimeUnit.MINUTES).build(new DetailedLoader())
+  val simpleCache: LoadingCache[Int, Option[Airport]] = CacheBuilder.newBuilder.maximumSize(10000).expireAfterAccess(2, TimeUnit.MINUTES).build(new SimpleLoader())
 
   def getAirport(airportId : Int, fullLoad : Boolean = false) : Option[Airport] = {
     if (fullLoad) {
