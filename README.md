@@ -36,6 +36,7 @@ Live at https://myfly.club/
 6. The application should be accessible at your hosts ip address and port 9000. If docker networks aren't limited by firewalls or network settings, it should be available without any reverse-proxying. (Dev only!)
 
 
+
 ## Nginx Proxy w/ Cloudflare HTTPS
 
 In Cloudflare go to your domain and then SSL/TLS > Origin Server. Click Create Certificate > Generate private key and CSR with Cloudflare > Drop down choose ECC > Create
